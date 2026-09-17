@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /kvkk.html
+Disallow: /gizlilik-politikasi.html
+Disallow: /cerez-politikasi.html
+Disallow: /kullanim-kosullari.html
+
+Sitemap: https://y73755-commits.github.io/karahangayrimenkul/sitemap.xml
