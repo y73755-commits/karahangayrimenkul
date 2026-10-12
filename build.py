@@ -9,7 +9,7 @@ PHONE_DISPLAY = "0501 701 79 08"
 PHONE_TEL = "+905017017908"
 WA_NUMBER = "905017017908"
 EMAIL = "info@karahangayrimenkul.com"
-SITE = "https://y73755-commits.github.io/karahangayrimenkul"
+SITE = "https://karahan-gayrimenkul.com"
 BRAND = "Karahan Gayrimenkul"
 ADDRESS = "Gültepe Mah., Kağıthane / İstanbul"
 

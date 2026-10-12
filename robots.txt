@@ -5,4 +5,4 @@ Disallow: /gizlilik-politikasi.html
 Disallow: /cerez-politikasi.html
 Disallow: /kullanim-kosullari.html
 
-Sitemap: https://y73755-commits.github.io/karahangayrimenkul/sitemap.xml
+Sitemap: https://karahan-gayrimenkul.com/sitemap.xml
