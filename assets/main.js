@@ -87,7 +87,7 @@
     var fKategori = qs.get('kategori') || '';
     if(fBolge || fKategori){
       var REGION_NAMES = {
-        kagithane:'Kağıthane', sisli:'Şişli', besiktas:'Beşiktaş', etiler:'Etiler',
+        kagithane:'Kağıthane', sisli:'Şişli', besiktas:'Beşiktaş', levent:'Levent', etiler:'Etiler',
         nisantasi:'Nişantaşı', sariyer:'Sarıyer', gokturk:'Göktürk', kemerburgaz:'Kemerburgaz',
         alibeykoy:'Alibeyköy', pendik:'Pendik', sultanbeyli:'Sultanbeyli', kadikoy:'Kadıköy'
       };
