@@ -193,7 +193,7 @@ section{padding:86px 0;}
 .card h3{margin-bottom:8px;}
 .card p{margin-bottom:0;font-size:.94rem;}
 .section--navy .card p,.section--black .card p{color:var(--muted);}
-.section--cream .card p{color:var(--muted-2);}
+.section--cream .card p{color:#5E574C;}
 
 .card-dark{
   background:linear-gradient(160deg,#111820,#0A1424);
@@ -259,7 +259,7 @@ section{padding:86px 0;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 @media (max-width:640px){.form-row{grid-template-columns:1fr;}}
 label{display:block;font-size:.82rem;font-weight:700;margin-bottom:7px;color:var(--muted);letter-spacing:.02em;}
-.section--cream label{color:var(--muted-2);}
+.section--cream label{color:#5E574C;}
 input,select,textarea{
   width:100%;padding:13px 14px;border-radius:9px;border:1px solid var(--line);
   background:rgba(255,255,255,.04);color:var(--white);font-family:var(--sans);font-size:.94rem;
@@ -351,3 +351,4 @@ footer ul a:hover{color:var(--gold-light);}
 .avatar-mono{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--gold-light),var(--gold));display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:var(--serif);font-weight:700;color:#05070A;font-size:1.3rem;}
 .agent-mini .role{display:block;font-size:.8rem;color:var(--muted);margin-bottom:16px;}
 .agent-mini .btn{width:100%;margin-bottom:10px;}
+.card-title{color:var(--white);margin-bottom:8px;}
