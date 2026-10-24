@@ -1,3 +1,11 @@
+window.dataLayer = window.dataLayer || [];
+document.addEventListener('click', function(e){
+  var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+  if(!a) return;
+  var h = a.getAttribute('href') || '';
+  if(h.indexOf('wa.me') !== -1) window.dataLayer.push({event: 'whatsapp_click', page_path: location.pathname});
+  else if(h.indexOf('tel:') === 0) window.dataLayer.push({event: 'phone_click', page_path: location.pathname});
+});
 (function(){
   var toggle = document.querySelector('.menu-toggle');
   var mobileLinks = document.querySelector('.mobile-links');
@@ -62,6 +70,8 @@
         submitBtn.disabled = true;
         setTimeout(function(){ submitBtn.disabled = false; }, 4000);
       }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({event: 'contact_form_submit_attempt', page_path: location.pathname});
       var data = new FormData(form);
       var lines = [];
       data.forEach(function(v,k){ if(v && k !== 'website') lines.push(k + ': ' + v); });
