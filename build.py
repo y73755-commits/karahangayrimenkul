@@ -11,7 +11,7 @@ WA_NUMBER = "905017017908"
 EMAIL = "info@karahangayrimenkul.com"
 SITE = "https://karahan-gayrimenkul.com"
 BRAND = "Karahan Gayrimenkul"
-ADDRESS = "Gültepe Mah., Kağıthane / İstanbul"
+ADDRESS = "Gültepe, Kağıthane / İstanbul"
 
 REGIONS = [
     ("kagithane", "Kağıthane"),
