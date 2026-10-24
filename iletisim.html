@@ -33,7 +33,7 @@
   "telephone": "+905017017908",
   "email": "info@karahangayrimenkul.com",
   "url": "https://karahan-gayrimenkul.com/index.html",
-  "areaServed": ["Kağıthane", "Şişli", "Beşiktaş", "Levent", "Etiler", "Nişantaşı", "Sarıyer", "Göktürk", "Kemerburgaz", "Alibeyköy", "Pendik", "Sultanbeyli", "Kadıköy"],
+  "areaServed": ["Kağıthane", "Şişli", "Beşiktaş", "Etiler", "Nişantaşı", "Sarıyer", "Göktürk", "Kemerburgaz", "Alibeyköy", "Pendik", "Sultanbeyli", "Kadıköy"],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Gültepe Mahallesi",
@@ -109,9 +109,10 @@
       <div><label>Telefon</label><input type="tel" name="telefon" required></div>
     </div>
     <label>E-posta</label>
-    <input type="email" name="eposta">
+    <input type="email" name="eposta" required>
     <label>Mesajınız</label>
-    <textarea name="mesaj" placeholder="Talebinizi kısaca yazın..."></textarea>
+    <textarea name="mesaj" placeholder="Talebinizi kısaca yazın..." required></textarea>
+    <label class="hp-field" style="position:absolute;left:-9999px;" aria-hidden="true">Web sitesi<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
     <button class="btn btn-gold" type="submit" style="width:100%;">Gönder</button>
     <div class="form-status"></div>
   </form>
@@ -139,11 +140,11 @@
     </div>
     <details class="faq" open>
       <summary>Danışmanlık hizmeti için bir bedel ödemem gerekiyor mu?</summary>
-      <p>İlk görüşme ve ön değerlendirme ücretsizdir. Hizmet kapsamı ve varsa danışmanlık bedeli, süreç netleştikten sonra şeffaf şekilde paylaşılır.</p>
+      <p>İlk görüşmede ihtiyacınızı birlikte değerlendiriyoruz. Hizmet kapsamı ve danışmanlık bedeli, süreç netleştikten sonra şeffaf şekilde paylaşılır.</p>
     </details>
     <details class="faq">
       <summary>Hangi bölgelerde hizmet veriyorsunuz?</summary>
-      <p>Şişli, Beşiktaş, Kağıthane, Beyoğlu, Göktürk, Kemerburgaz, Kadıköy, Beykoz ve Ataşehir başta olmak üzere İstanbul'un seçili bölgelerinde hizmet veriyoruz.</p>
+      <p>Şişli, Kağıthane, Beşiktaş, Etiler, Nişantaşı, Sarıyer, Göktürk, Kemerburgaz, Alibeyköy, Pendik, Sultanbeyli ve Kadıköy başta olmak üzere İstanbul'un seçili bölgelerinde hizmet veriyoruz.</p>
     </details>
     <details class="faq">
       <summary>Formu doldurduktan sonra ne kadar sürede dönüş alırım?</summary>
@@ -187,7 +188,6 @@
           <li><a href="bolgeler/kagithane.html">Kağıthane</a></li>
           <li><a href="bolgeler/sisli.html">Şişli</a></li>
           <li><a href="bolgeler/besiktas.html">Beşiktaş</a></li>
-          <li><a href="bolgeler/levent.html">Levent</a></li>
           <li><a href="bolgeler/etiler.html">Etiler</a></li>
           <li><a href="bolgeler/nisantasi.html">Nişantaşı</a></li>
           <li><a href="bolgeler/sariyer.html">Sarıyer</a></li>
