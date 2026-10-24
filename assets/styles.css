@@ -268,12 +268,15 @@ input,select,textarea{
 .section--cream input,.section--cream select,.section--cream textarea{
   background:#F7F2E6;color:var(--ink);border-color:rgba(5,7,10,.12);
 }
+select{color-scheme:dark;}
+select option{background-color:var(--navy-deep);color:var(--white);padding:6px 10px;}
+.section--cream select{color-scheme:light;}
+.section--cream select option{background-color:var(--white);color:var(--ink);}
 textarea{resize:vertical;min-height:120px;}
 input::placeholder,textarea::placeholder{color:var(--muted-2);}
 .form-status{display:none;margin-top:14px;padding:14px 16px;border-radius:10px;background:rgba(212,178,122,.12);border:1px solid var(--line);font-size:.88rem;color:var(--gold-light);}
 .section--cream .form-status{background:#F7F2E6;color:var(--bronze);border-color:#E3D3B8;}
 
-/* search / filter widget on hero */
 .search-widget{
   background:rgba(24,59,79,.4);border:1px solid var(--line);border-radius:var(--radius);
   padding:26px;margin-top:34px;backdrop-filter:blur(6px);
@@ -283,7 +286,6 @@ input::placeholder,textarea::placeholder{color:var(--muted-2);}
 .search-widget label{color:var(--muted);}
 .search-widget input,.search-widget select{margin-bottom:0;}
 
-/* ---------- FAQ ---------- */
 details.faq{border-bottom:1px solid var(--line);padding:18px 0;}
 details.faq summary{cursor:pointer;font-weight:700;font-family:var(--serif);font-size:1.06rem;list-style:none;display:flex;justify-content:space-between;gap:14px;color:var(--white);}
 details.faq summary::-webkit-details-marker{display:none;}
@@ -293,14 +295,12 @@ details.faq p{margin-top:12px;color:var(--muted);}
 .section--cream details.faq summary{color:var(--ink);}
 .section--cream details.faq{border-color:rgba(5,7,10,.12);}
 
-/* ---------- CTA band ---------- */
 .cta-band{
   background:radial-gradient(circle at 20% 20%,rgba(212,178,122,.26),transparent 55%),linear-gradient(150deg,var(--navy-2),var(--navy-deep));
   text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
 }
 .cta-band p{color:var(--muted);max-width:52ch;margin:0 auto 26px;}
 
-/* ---------- Blog ---------- */
 .blog-card{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:rgba(255,255,255,.03);display:flex;flex-direction:column;}
 .blog-thumb{height:170px;background:linear-gradient(135deg,#111820,#0A1424);display:flex;align-items:center;justify-content:center;}
 .blog-thumb span{font-family:var(--serif);color:var(--gold);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;}
@@ -313,7 +313,6 @@ details.faq p{margin-top:12px;color:var(--muted);}
 .blog-article p{color:var(--muted);font-size:1.02rem;}
 .blog-article .updated-note{font-size:.82rem;color:var(--muted-2);border-top:1px solid var(--line);padding-top:18px;margin-top:32px;}
 
-/* ---------- Footer ---------- */
 footer{background:linear-gradient(165deg,#0A1424,#05070A);border-top:1px solid var(--line);padding:64px 0 26px;}
 .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;}
 @media (max-width:860px){.footer-grid{grid-template-columns:1fr 1fr;}}
@@ -328,7 +327,6 @@ footer ul a:hover{color:var(--gold-light);}
   border-top:1px solid var(--line);margin-top:46px;padding-top:22px;font-size:.8rem;color:var(--muted-2);
 }
 
-/* ---------- Cookie banner ---------- */
 .cookie-banner{
   position:fixed;left:20px;right:20px;bottom:20px;z-index:80;max-width:560px;margin:0 auto;
   background:#111820;border:1px solid var(--line);border-radius:14px;padding:20px 22px;
@@ -338,14 +336,12 @@ footer ul a:hover{color:var(--gold-light);}
 .cookie-banner p{font-size:.86rem;color:var(--muted);margin:0;}
 .cookie-actions{display:flex;gap:10px;flex-wrap:wrap;}
 
-/* ---------- Legal / prose pages ---------- */
 .prose{max-width:760px;}
 .prose h2{margin-top:1.4em;}
 .prose ul{color:var(--muted);padding-left:1.2em;}
 .prose li{margin-bottom:.5em;}
 .prose p{color:var(--muted);}
 
-/* ---------- misc ---------- */
 .cur-year{}
 .tag-list{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px;}
 .tag-list span{font-size:.76rem;padding:6px 14px;border:1px solid var(--line);border-radius:999px;color:var(--muted);}
