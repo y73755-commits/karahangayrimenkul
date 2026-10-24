@@ -10,8 +10,16 @@ document.addEventListener('click', function(e){
   var toggle = document.querySelector('.menu-toggle');
   var mobileLinks = document.querySelector('.mobile-links');
   if(toggle && mobileLinks){
+    toggle.setAttribute('aria-expanded','false');
     toggle.addEventListener('click', function(){
-      mobileLinks.classList.toggle('open');
+      var isOpen = mobileLinks.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && mobileLinks.classList.contains('open')){
+        mobileLinks.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+      }
     });
   }
   var cookieBanner = document.querySelector('.cookie-banner');

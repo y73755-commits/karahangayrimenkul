@@ -353,3 +353,7 @@ footer ul a:hover{color:var(--gold-light);}
 .agent-mini .btn{width:100%;margin-bottom:10px;}
 .card-title{color:var(--white);margin-bottom:8px;}
 .section--cream .step p{color:#5E574C;}
+
+/* ===== Düzeltmeler: mobil başlık taşması, breadcrumb kontrastı ===== */
+@media (max-width:600px){ .header-actions .btn-gold{display:none;} .wrap{padding:0 16px;} }
+.breadcrumb span{color:var(--muted);}
