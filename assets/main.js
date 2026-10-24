@@ -83,18 +83,15 @@ document.addEventListener('click', function(e){
       var data = new FormData(form);
       var lines = [];
       data.forEach(function(v,k){ if(v && k !== 'website') lines.push(k + ': ' + v); });
-      var body = encodeURIComponent(lines.join('\n'));
-      var subject = encodeURIComponent('Karahan Gayrimenkul – Web Sitesi Talebi');
-      var statusBox = form.querySelector('.form-status');
-      var mailto = 'mailto:info@karahangayrimenkul.com?subject=' + subject + '&body=' + body;
       var waText = encodeURIComponent('Merhaba, web sitesi üzerinden iletişim formunu doldurdum:\n' + lines.join('\n'));
       var waLink = 'https://wa.me/905017017908?text=' + waText;
+      var statusBox = form.querySelector('.form-status');
       if(statusBox){
-        statusBox.innerHTML = 'Formunuz e-posta istemcinizde hazırlandı. Açılan pencereden gönderebilir, ya da doğrudan ' +
-          '<a href="'+waLink+'" target="_blank" rel="noopener">WhatsApp üzerinden</a> bize ulaşabilirsiniz.';
+        statusBox.innerHTML = 'Bilgileriniz WhatsApp mesajına aktarıldı. Açılan ekranda "Gönder" tuşuna basarak talebinizi iletebilirsiniz. ' +
+          'Açılmadıysa <a href="'+waLink+'" target="_blank" rel="noopener">WhatsApp\'ta açın</a>.';
         statusBox.style.display = 'block';
       }
-      window.location.href = mailto;
+      window.open(waLink, '_blank', 'noopener');
     });
   });
   document.querySelectorAll('.cur-year').forEach(function(el){ el.textContent = new Date().getFullYear(); });
