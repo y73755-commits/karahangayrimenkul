@@ -119,15 +119,16 @@ document.addEventListener('click', function(e){
       if(fBolge) noticeParts.push(REGION_NAMES[fBolge] || fBolge);
       if(fKategori) noticeParts.push(fKategori);
       var noticeLabel = noticeParts.join(' · ');
+      var noticeLabelHtml = noticeLabel.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
       if(grid){
         var notice = document.createElement('div');
         notice.className = 'search-filter-notice';
         notice.style.cssText = 'background:rgba(212,178,122,.1);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:18px;color:var(--muted);font-size:.92rem;';
         if(matched > 0){
-          notice.innerHTML = '<strong style="color:var(--gold-light);">' + noticeLabel + '</strong> için uygun seçenekler aşağıda listeleniyor. ' +
+          notice.innerHTML = '<strong style="color:var(--gold-light);">' + noticeLabelHtml + '</strong> için uygun seçenekler aşağıda listeleniyor. ' +
             'Tüm seçenekleri görmek için <a href="?" style="color:var(--gold-light);">filtreyi temizleyin</a>.';
         } else {
-          notice.innerHTML = '<strong style="color:var(--gold-light);">' + noticeLabel + '</strong> kriterine tam uyan örnek ilanımız şu anda yok. ' +
+          notice.innerHTML = '<strong style="color:var(--gold-light);">' + noticeLabelHtml + '</strong> kriterine tam uyan örnek ilanımız şu anda yok. ' +
             'Ancak bu kritere uygun fırsatları sizin için araştırabiliriz — ' +
             '<a href="iletisim.html" style="color:var(--gold-light);">bize ulaşın</a> ya da ' +
             '<a href="https://wa.me/905017017908?text=' + encodeURIComponent('Merhaba, ' + noticeLabel + ' kriterinde gayrimenkul arıyorum.') + '" target="_blank" rel="noopener" style="color:var(--gold-light);">WhatsApp üzerinden yazın</a>.';
