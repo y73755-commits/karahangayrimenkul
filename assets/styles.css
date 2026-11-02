@@ -3,6 +3,13 @@
    Palet: siyah / lacivert (gece) + gold vurgu + krem kart
    ========================================================= */
 
+/* Yazı tipleri yerelde barındırılır (Google Fonts'a dış istek yok).
+   latin + Türkçe harfler (Ğ ğ İ Ş ş ₺) ayrı küçük dosyada. */
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/inter-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/inter-tr.woff2) format('woff2');unicode-range:U+011E-011F,U+0130,U+015E-015F,U+20BA;}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/playfair-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/playfair-tr.woff2) format('woff2');unicode-range:U+011E-011F,U+0130,U+015E-015F,U+20BA;}
+
 :root{
   /* Karahan Gayrimenkul — resmi renk paleti */
   --black:#05070A;        /* Gece Siyahı */
@@ -125,7 +132,6 @@ header{
 .hero-photo{
   position:relative;overflow:hidden;
   padding:150px 0 110px;
-  background-size:cover;background-position:center;
   isolation:isolate;
 }
 .hero-photo::before{
@@ -144,7 +150,7 @@ header{
 
 /* smaller page hero for subpages */
 .page-hero{
-  position:relative;padding:130px 0 70px;background-size:cover;background-position:center;isolation:isolate;
+  position:relative;padding:130px 0 70px;isolation:isolate;overflow:hidden;
 }
 .page-hero::before{
   content:"";position:absolute;inset:0;z-index:0;
@@ -235,14 +241,14 @@ section{padding:86px 0;}
 .split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
 @media (max-width:860px){.split{grid-template-columns:1fr;gap:32px;}}
 .split img,.split .img-box{border-radius:var(--radius);box-shadow:var(--shadow);}
-.img-box{background-size:cover;background-position:center;min-height:340px;border:1px solid var(--line);}
+.img-box{position:relative;overflow:hidden;isolation:isolate;min-height:340px;border:1px solid var(--line);}
 
 /* ---------- Listing / property cards ---------- */
 .listing-card{
   border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
   background:rgba(255,255,255,.03);
 }
-.listing-thumb{height:210px;background-size:cover;background-position:center;position:relative;}
+.listing-thumb{height:210px;position:relative;overflow:hidden;isolation:isolate;}
 .listing-tag{
   position:absolute;top:14px;left:14px;background:var(--gold);color:#05070A;
   font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:999px;letter-spacing:.03em;
@@ -357,3 +363,18 @@ footer ul a:hover{color:var(--gold-light);}
 /* ===== Düzeltmeler: mobil başlık taşması, breadcrumb kontrastı ===== */
 @media (max-width:600px){ .header-actions .btn-gold{display:none;} .wrap{padding:0 16px;} }
 .breadcrumb span{color:var(--muted);}
+
+/* Arka plan görselleri: gerçek <img> (duyarlı boyut + AVIF/WebP), kapsayıcıyı kaplar */
+.bg-pic{position:absolute;inset:0;z-index:-1;display:block;}
+.bg-pic img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;border-radius:0;box-shadow:none;}
+.listing-tag{z-index:1;}
+
+/* form açıklaması ve sonuç alanı */
+.form-note{font-size:.86rem;color:var(--muted);margin:6px 0 14px;line-height:1.55;}
+.form-note a,.form-status a{color:var(--gold-light);text-decoration:underline;}
+.form-status{display:block;margin-top:14px;font-size:.92rem;line-height:1.55;}
+/* canlı bölge erişilebilirlik ağacında hep bulunsun (ekran okuyucu duyurusu için); boşken yer kaplamaz */
+.form-status:empty{padding:0;border:0;margin:0;background:none;}
+label .opt{font-weight:400;color:var(--muted-2);font-size:.85em;}
+.linkish{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:none;}
+.linkish:hover{color:var(--gold-light);}

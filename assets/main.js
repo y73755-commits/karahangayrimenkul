@@ -1,11 +1,4 @@
-window.dataLayer = window.dataLayer || [];
-document.addEventListener('click', function(e){
-  var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
-  if(!a) return;
-  var h = a.getAttribute('href') || '';
-  if(h.indexOf('wa.me') !== -1) window.dataLayer.push({event: 'whatsapp_click', page_path: location.pathname});
-  else if(h.indexOf('tel:') === 0) window.dataLayer.push({event: 'phone_click', page_path: location.pathname});
-});
+/* Telefon/WhatsApp tıklama ölçümü ve çerez izni: assets/olcum.js */
 (function(){
   var toggle = document.querySelector('.menu-toggle');
   var mobileLinks = document.querySelector('.mobile-links');
@@ -21,24 +14,6 @@ document.addEventListener('click', function(e){
         toggle.setAttribute('aria-expanded','false');
       }
     });
-  }
-  var cookieBanner = document.querySelector('.cookie-banner');
-  if(cookieBanner){
-    try{
-      if(!localStorage.getItem('karahan_cookie_consent')){
-        cookieBanner.classList.add('show');
-      }
-    }catch(e){
-      cookieBanner.classList.add('show');
-    }
-    var accept = cookieBanner.querySelector('[data-cookie-accept]');
-    var reject = cookieBanner.querySelector('[data-cookie-reject]');
-    function dismiss(val){
-      try{ localStorage.setItem('karahan_cookie_consent', val); }catch(e){}
-      cookieBanner.classList.remove('show');
-    }
-    if(accept) accept.addEventListener('click', function(){ dismiss('accepted'); });
-    if(reject) reject.addEventListener('click', function(){ dismiss('rejected'); });
   }
   var searchForm = document.querySelector('form[data-karahan-search]');
   if(searchForm){
@@ -62,36 +37,44 @@ document.addEventListener('click', function(e){
       window.location.href = target + (params.toString() ? ('?' + params.toString()) : '');
     });
   }
+  /* İletişim formu → WhatsApp mesajı. Bilgiler sunucuya gönderilmez; ziyaretçi WhatsApp'ta "Gönder"e basınca bize ulaşır.
+     Ölçüm: her gönderme denemesi "form_submit_attempt" (valid=true/false); yalnızca geçerli formda
+     "whatsapp_message_prepared" (aynı mesaj oturumda bir kez). Hiçbiri "talep teslim edildi" anlamına gelmez. */
+  var ETIKET = { ad_soyad: 'Ad Soyad', telefon: 'Telefon', eposta: 'E-posta', mesaj: 'Mesaj' };
   document.querySelectorAll('form[data-karahan-form]').forEach(function(form){
+    var formAdi = form.getAttribute('data-form-name') || 'iletisim';
     var submitBtn = form.querySelector('button[type="submit"]');
+    var statusBox = form.querySelector('.form-status');
+    function durum(html){ if(statusBox){ statusBox.innerHTML = html; statusBox.style.display = 'block'; } }
     form.addEventListener('submit', function(ev){
       ev.preventDefault();
       var honeypot = form.querySelector('input[name="website"]');
-      if(honeypot && honeypot.value){
+      if(honeypot && honeypot.value) return;
+      if(typeof form.checkValidity === 'function' && !form.checkValidity()){
+        var hatali = form.querySelector('input:invalid, textarea:invalid, select:invalid');
+        if(window.olcum) window.olcum.formDenemesi(formAdi, false, hatali ? hatali.name : '');
+        form.reportValidity();
         return;
       }
-      if(typeof form.reportValidity === 'function' && !form.reportValidity()){
-        return;
-      }
-      if(submitBtn){
-        if(submitBtn.disabled) return;
-        submitBtn.disabled = true;
-        setTimeout(function(){ submitBtn.disabled = false; }, 4000);
-      }
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({event: 'contact_form_submit_attempt', page_path: location.pathname});
-      var data = new FormData(form);
+      if(submitBtn && submitBtn.disabled) return;
+      if(window.olcum) window.olcum.formDenemesi(formAdi, true);
       var lines = [];
-      data.forEach(function(v,k){ if(v && k !== 'website') lines.push(k + ': ' + v); });
-      var waText = encodeURIComponent('Merhaba, web sitesi üzerinden iletişim formunu doldurdum:\n' + lines.join('\n'));
-      var waLink = 'https://wa.me/905017017908?text=' + waText;
-      var statusBox = form.querySelector('.form-status');
-      if(statusBox){
-        statusBox.innerHTML = 'Bilgileriniz WhatsApp mesajına aktarıldı. Açılan ekranda "Gönder" tuşuna basarak talebinizi iletebilirsiniz. ' +
-          'Açılmadıysa <a href="'+waLink+'" target="_blank" rel="noopener">WhatsApp\'ta açın</a>.';
-        statusBox.style.display = 'block';
+      new FormData(form).forEach(function(v, k){ v = String(v).trim(); if(v && k !== 'website') lines.push((ETIKET[k] || k) + ': ' + v); });
+      var metin = 'Merhaba, web sitesindeki iletişim formundan yazıyorum:\n' + lines.join('\n');
+      var waLink = 'https://wa.me/905017017908?text=' + encodeURIComponent(metin);
+      var win = null;
+      try { win = window.open(waLink, '_blank'); } catch(e) { win = null; }
+      if(win){
+        try { win.opener = null; } catch(e) {}
+        durum('Mesajınız WhatsApp’ta hazırlandı. <strong>Son adım:</strong> açılan WhatsApp ekranında <strong>Gönder</strong>’e basın; siz göndermeden mesaj bize ulaşmaz. ' +
+          'WhatsApp açılmadıysa <a href="' + waLink + '" target="_blank" rel="noopener" data-loc="form_fallback">buradan açın</a>.');
+      } else {
+        durum('WhatsApp penceresi otomatik açılamadı (tarayıcınız engellemiş olabilir). Mesajınız hazır: ' +
+          '<a class="btn btn-gold btn-sm" style="margin-top:10px;" href="' + waLink + '" target="_blank" rel="noopener" data-loc="form_fallback">WhatsApp’ta mesajı aç</a> ' +
+          'bağlantısına dokunun, ardından açılan ekranda <strong>Gönder</strong>’e basın.');
       }
-      window.open(waLink, '_blank', 'noopener');
+      if(window.olcum) window.olcum.whatsappHazirlandi(formAdi, metin);
+      if(submitBtn){ submitBtn.disabled = true; setTimeout(function(){ submitBtn.disabled = false; }, 4000); }
     });
   });
   document.querySelectorAll('.cur-year').forEach(function(el){ el.textContent = new Date().getFullYear(); });
