@@ -381,3 +381,9 @@ footer ul a:hover{color:var(--gold-light);}
 label .opt{font-weight:400;color:var(--muted-2);font-size:.85em;}
 .linkish{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:none;}
 .linkish:hover{color:var(--gold-light);}
+
+/* 320 px ve dar ekranlar: yatay taşma olmasın */
+.footer-bottom > div{flex-wrap:wrap;}
+.split > *{min-width:0;}
+.split a[href^="mailto:"],.split li{overflow-wrap:anywhere;}
+@media (max-width:400px){.form-box{padding:26px 18px;}}
