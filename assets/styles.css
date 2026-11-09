@@ -390,3 +390,7 @@ label .opt{font-weight:400;color:var(--muted-2);font-size:.85em;}
   .form-box{padding:26px 18px;}
   .btn{white-space:normal;max-width:100%;text-align:center;}
 }
+
+/* Klavye kullanıcıları için "İçeriğe geç" bağlantısı: yalnızca Tab ile odaklanınca görünür */
+.skip-link{position:absolute;left:-9999px;top:8px;z-index:1000;padding:10px 16px;border-radius:10px;background:var(--gold-light);color:#05070A;font-weight:600;text-decoration:none;}
+.skip-link:focus{left:8px;outline:2px solid #fff;outline-offset:2px;}
