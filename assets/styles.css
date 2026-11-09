@@ -386,4 +386,7 @@ label .opt{font-weight:400;color:var(--muted-2);font-size:.85em;}
 .footer-bottom > div{flex-wrap:wrap;}
 .split > *{min-width:0;}
 .split a[href^="mailto:"],.split li{overflow-wrap:anywhere;}
-@media (max-width:400px){.form-box{padding:26px 18px;}}
+@media (max-width:400px){
+  .form-box{padding:26px 18px;}
+  .btn{white-space:normal;max-width:100%;text-align:center;}
+}
