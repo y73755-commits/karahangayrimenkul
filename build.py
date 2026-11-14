@@ -261,7 +261,7 @@ def page(title, description, path_prefix, canonical_path, active, body, og_image
 </main>
 {footer(path_prefix)}
 {cookie_banner(path_prefix)}
-<script src="{path_prefix}assets/main.js?v=3"></script>
+<script src="{path_prefix}assets/main.js?v=7"></script>
 </body>
 </html>
 """
