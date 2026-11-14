@@ -68,6 +68,9 @@ NAV_ITEMS = [
 
 def wa_link(text):
     from urllib.parse import quote
+    # Nova ile aynı numara kullanıldığı için taslakta marka adı her zaman geçsin
+    if "Karahan" not in text:
+        text = text.replace("Merhaba,", "Merhaba Karahan Gayrimenkul,", 1)
     return f"https://wa.me/{WA_NUMBER}?text={quote(text)}"
 
 def logo_svg():

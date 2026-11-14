@@ -60,7 +60,7 @@
       if(window.olcum) window.olcum.formDenemesi(formAdi, true);
       var lines = [];
       new FormData(form).forEach(function(v, k){ v = String(v).trim(); if(v && k !== 'website') lines.push((ETIKET[k] || k) + ': ' + v); });
-      var metin = 'Merhaba, web sitesindeki iletişim formundan yazıyorum:\n' + lines.join('\n');
+      var metin = 'Merhaba, Karahan Gayrimenkul web sitesindeki iletişim formundan yazıyorum:\n' + lines.join('\n');
       var waLink = 'https://wa.me/905017017908?text=' + encodeURIComponent(metin);
       var win = null;
       try { win = window.open(waLink, '_blank'); } catch(e) { win = null; }
@@ -114,7 +114,7 @@
           notice.innerHTML = '<strong style="color:var(--gold-light);">' + noticeLabelHtml + '</strong> kriterine tam uyan örnek ilanımız şu anda yok. ' +
             'Ancak bu kritere uygun fırsatları sizin için araştırabiliriz — ' +
             '<a href="iletisim.html" style="color:var(--gold-light);">bize ulaşın</a> ya da ' +
-            '<a href="https://wa.me/905017017908?text=' + encodeURIComponent('Merhaba, ' + noticeLabel + ' kriterinde gayrimenkul arıyorum.') + '" target="_blank" rel="noopener" style="color:var(--gold-light);">WhatsApp üzerinden yazın</a>.';
+            '<a href="https://wa.me/905017017908?text=' + encodeURIComponent('Merhaba Karahan Gayrimenkul, ' + noticeLabel + ' kriterinde gayrimenkul arıyorum.') + '" target="_blank" rel="noopener" style="color:var(--gold-light);">WhatsApp üzerinden yazın</a>.';
         }
         grid.parentNode.insertBefore(notice, grid);
       }
