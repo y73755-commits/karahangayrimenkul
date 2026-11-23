@@ -70,13 +70,13 @@ def wa_link(text):
     from urllib.parse import quote
     return f"https://wa.me/{WA_NUMBER}?text={quote(text)}"
 
-def logo_svg():
+def logo_svg(gid='g'):
     return (
         "<svg viewBox='0 0 48 48' fill='none'>"
-        "<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>"
+        "<defs><linearGradient id='"+gid+"' x1='0' y1='0' x2='1' y2='1'>"
         "<stop offset='0' stop-color='#D4B27A'/><stop offset='1' stop-color='#C9A46A'/></linearGradient></defs>"
         "<text x='24' y='34' font-family='Georgia,serif' font-size='28' font-weight='700' "
-        "text-anchor='middle' fill='url(#g)'>K</text></svg>"
+        "text-anchor='middle' fill='url(#"+gid+")'>K</text></svg>"
     )
 
 def head(title, description, path_prefix, canonical_path, og_image="assets/favicon-512.png", robots="index, follow"):
@@ -201,7 +201,7 @@ def footer(path_prefix):
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
-          <div class="brand-mark">{logo_svg()}</div>
+          <div class="brand-mark">{logo_svg('g2')}</div>
           <div class="brand-word">
             <div class="word-1">Karahan</div>
             <div class="word-2">Gayrimenkul</div>
